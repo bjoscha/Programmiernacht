@@ -1,21 +1,17 @@
 package com.example.awesome.programmiernacht;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.res.XmlResourceParser;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.*;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
 
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends ActionBarActivity{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +19,14 @@ public class MainActivity extends ActionBarActivity {
 
         int resourceId = R.xml.cards;
 
-        //String foo = xpp.getText();
 
 
 
         setContentView(R.layout.activity_main);
+
+
+
+
     }
 
 
