@@ -39,9 +39,9 @@ public class GameLogic {
     public WordCard next(boolean correct) {
 
         if(correct) {
-            return wcp.GetNextCard(min(activeCard.difficulty + 1, 3));
+            return wcp.GetNextCard(min(activeCard.GetDifficulty() + 1, 3));
         } else {
-            return wcp.GetNextCard(max(activeCard.difficulty - 1, 1));
+            return wcp.GetNextCard(max(activeCard.GetDifficulty() - 1, 1));
         }
     }
 
