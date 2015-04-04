@@ -22,6 +22,7 @@ public class Timer implements Runnable {
                 long secondsSinceStart = (SystemClock.currentThreadTimeMillis()-startTime)/1000;
                 if(secondsSinceStart >= 60) {
                     gameLogic.timeUp();
+                    running = false;
                 } else {
                     gameLogic.updateTime(secondsSinceStart);
                 }

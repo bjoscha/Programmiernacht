@@ -1,32 +1,35 @@
 package com.example.awesome.programmiernacht.gameLogic;
 
 import com.example.awesome.programmiernacht.Group;
+import com.example.awesome.programmiernacht.WordCard;
+import com.example.awesome.programmiernacht.WordCardProvider;
 
 import java.util.List;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 public class GameLogic {
 
     private List<Group> groups;
     private Group activeGroup;
     private WordCard activeCard;
-    private boolean gameOver = false;
+    private boolean gameOver;
+    private WordCardProvider wcp;
 
     public void newGame(List<Group> groups) {
         this.groups = groups;
-    }
-
-    public int getPoints() {
-
-        // TODO
-
-        return 0;
+        this.activeGroup = 
+        gameOver = false;
     }
 
     public WordCard next(boolean correct) {
 
-        // TODO
-
-        return null;
+        if(correct) {
+            return wcp.GetNextCard(min(activeCard.difficulty + 1, 3));
+        } else {
+            return wcp.GetNextCard(max(activeCard.difficulty - 1, 1));
+        }
     }
 
     public void nextGroup() {
@@ -43,7 +46,7 @@ public class GameLogic {
 
     public WordCard start() {
 
-        int difficulty = 0;
+        int difficulty = 1;
         int maxCards = 0;
         for(int i=1; i<=activeGroup.getPointsLastRound().size(); i++) {
             int cards = activeGroup.getPointsLastRound().get(i-1) / i;
@@ -55,9 +58,10 @@ public class GameLogic {
 
         activeGroup.clearPointsLastRound();
 
-        // TODO timer
+        Timer timer = new Timer(this);
+        timer.run();
 
-        return WordCard.getCardForDifficulty(difficulty);
+        return wcp.GetNextCard(difficulty);
     }
 
     public boolean isGameOver() {
@@ -65,18 +69,16 @@ public class GameLogic {
     }
 
     public void updateTime(long secondsSinceStart) {
-        // TODO call GUI interface
+
+        // TODO call GUI
+
     }
 
     public void timeUp() {
-        gameOver = true;
-    }
 
-    // TODO: dummy interfaces
-    private static class WordCard {
-        public static WordCard getCardForDifficulty(int diff) {
-            return null;
-        }
+        // TODO call GUI
+
+        gameOver = true;
     }
 
 }
