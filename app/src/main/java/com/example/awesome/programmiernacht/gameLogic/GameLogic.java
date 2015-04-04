@@ -16,6 +16,7 @@ public class GameLogic {
     private WordCard activeCard;
     private boolean gameOver;
     private WordCardProvider wcp;
+    private int targetPoints = 30;
 
     public void newGame(List<Group> groups) {
         this.groups = groups;
@@ -33,7 +34,11 @@ public class GameLogic {
     }
 
     public void nextGroup() {
-        activeGroup = groups.get((activeGroup.getId()+1) % groups.size());
+        if(activeGroup.getTotalPoints() >= targetPoints) {
+            gameOver = true;
+        } else {
+            activeGroup = groups.get((activeGroup.getId()+1) % groups.size());
+        }
     }
 
     public Group getActiveGroup() {
@@ -71,14 +76,11 @@ public class GameLogic {
     public void updateTime(long secondsSinceStart) {
 
         // TODO call GUI
-
     }
 
     public void timeUp() {
 
         // TODO call GUI
-
-        gameOver = true;
     }
 
 }
