@@ -19,7 +19,7 @@ public class GameLogic {
 
     public void newGame(List<Group> groups) {
         this.groups = groups;
-        this.activeGroup = 
+        this.activeGroup = groups.get(0);
         gameOver = false;
     }
 
