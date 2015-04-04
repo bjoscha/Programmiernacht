@@ -8,12 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.awesome.programmiernacht.gameLogic.GameLogic;
+
 import java.util.LinkedList;
 
 
 public class selectNumberOfGroups extends ActionBarActivity {
 
     private int numberOfGroups = 0;
+    private GameLogic gl = GameLogic.getInstance();
 
     private void userSelectNumberOfGroups(View view) {
         Button button = (Button) view;
@@ -21,9 +24,11 @@ public class selectNumberOfGroups extends ActionBarActivity {
         numberOfGroups = Integer.parseInt(button.getText().toString());
 
         //todo
-        for(int i=0; i<numberOfGroups; i++) {
+        for(int i=1; i<=numberOfGroups; i++) {
             groups.add(new Group(i));
         }
+
+        gl.newGame(groups);
     }
 
 

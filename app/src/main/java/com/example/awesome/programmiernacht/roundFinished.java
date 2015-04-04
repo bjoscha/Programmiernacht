@@ -19,7 +19,7 @@ import java.util.List;
 
 
 public class roundFinished extends ActionBarActivity {
-    private GameLogic gl;
+    private GameLogic gl = GameLogic.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,11 @@ public class roundFinished extends ActionBarActivity {
         for (Group curGroup : groups) {
             LinearLayout curLayout = (LinearLayout) findViewById(R.id.roundFinished_activity);
             TextView tv = new TextView(this);
+            int sumLastRound = 0;
+            for (int i : curGroup.getPointsLastRound())
+                sumLastRound += i;
             tv.setText("Gruppe " + curGroup.getId() + ": " + curGroup.getTotalPoints() +
-                        " + " + curGroup.getPointsLastRound());
+                        " + " + sumLastRound);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             tv.setLayoutParams(lp);

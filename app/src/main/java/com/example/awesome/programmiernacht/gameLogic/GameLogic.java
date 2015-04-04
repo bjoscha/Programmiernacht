@@ -5,6 +5,7 @@ import com.example.awesome.programmiernacht.Timeable;
 import com.example.awesome.programmiernacht.WordCard;
 import com.example.awesome.programmiernacht.WordCardProvider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.max;
@@ -58,7 +59,25 @@ public class GameLogic {
     }
 
     public List<Group> getAllGroups() {
+        Group g0 = new Group(0);
+        g0.addPoints(1);
+        g0.addPoints(2);
+        g0.addPoints(2);
+
+        Group g1 = new Group(1);
+        g1.addPoints(2);
+        g1.addPoints(3);
+        g1.addPoints(3);
+
+        this.groups = new ArrayList<Group>();
+
+        groups.clear();
+
+        groups.add(g0);
+        groups.add(g1);
+
         return groups;
+
     }
 
     public WordCard start(Timeable timeable) {

@@ -9,15 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.awesome.programmiernacht.gameLogic.GameLogic;
+
 
 public class groupReady extends ActionBarActivity {
+    private GameLogic gl = GameLogic.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_ready);
         TextView textGroup = (TextView) findViewById(R.id.textViewGr);
-        int activeGroup = 5; //todo
+        int activeGroup = gl.getActiveGroup().getId();
         textGroup.setText("Gruppe "+activeGroup +" bereit?");
     }
 

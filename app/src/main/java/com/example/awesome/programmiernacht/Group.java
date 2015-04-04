@@ -40,6 +40,14 @@ public class Group {
         return pointsLastRound;
     }
 
+    public int getTurnPoints() {
+        int sum = 0;
+        for (int i : pointsLastRound) {
+            sum += i;
+        }
+        return sum;
+    }
+
     public void clearPointsLastRound() {
         pointsLastRound.clear();
     }

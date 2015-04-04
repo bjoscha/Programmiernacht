@@ -6,23 +6,63 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.awesome.programmiernacht.gameLogic.GameLogic;
 
-public class gameScreen extends ActionBarActivity {
+import java.util.List;
+
+
+public class gameScreen extends ActionBarActivity implements Timeable{
+    private GameLogic gl = GameLogic.getInstance();
+
+
+    @Override
+    public void setRemainingTime(int remainingTime) {
+        TextView textTime = (TextView) findViewById(R.id.textViewTime);
+        textTime.setText("" + remainingTime);
+    }
+
+    @Override
+    public void timeOver() {
+        Intent intent = new Intent(this, moveFinished.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
-        TextView textTime = (TextView) findViewById(R.id.textViewTime);
-        int currentTime = 50; //todo
-        textTime.setText("Zeit:" +currentTime);
+
         TextView textPoints = (TextView) findViewById(R.id.textViewPoints);
-        int currentPoints = 10; //todo
+        int currentPoints = 0;
         textPoints.setText("Punkte:" +currentPoints);
+
+        WordCard wc = gl.start(this);
+
+        showNextWord(wc);
     }
 
+    private void showNextWord(WordCard wc) {
+        ((TextView) findViewById(R.id.textView_Word)).setText(wc.GetWord());
+
+        List<String> forbiddenWords = wc.GetForbiddenWords();
+
+        LinearLayout curLayout = (LinearLayout) findViewById(R.id.gameScreen);
+
+        for (int i = 0; i < forbiddenWords.size(); i++) {
+            String curForbWord = forbiddenWords.get(i);
+            TextView tv = new TextView(this);
+
+            tv.setText(curForbWord);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tv.setLayoutParams(lp);
+            curLayout.addView(tv, 6 + i);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,10 +90,17 @@ public class gameScreen extends ActionBarActivity {
     public void skipWord(View view) {
         Intent intent = new Intent(this, gameScreen.class);
         startActivity(intent);
+
+        showNextWord(gl.next(false));
     }
 
     public void nextWord(View view) {
         Intent intent = new Intent(this, gameScreen.class);
         startActivity(intent);
+
+        showNextWord(gl.next(true));
+        Group g = gl.getActiveGroup();
+
+        ((TextView) findViewById(R.id.textView_totalPoints)).setText("" + g.getTurnPoints());
     }
 }

@@ -54,7 +54,8 @@ public class MainActivity extends ActionBarActivity{
 
 
     public void newGame(View view) {
-        Intent intent = new Intent(this, selectNumberOfGroups.class);
+        //Intent intent = new Intent(this, selectNumberOfGroups.class);
+        Intent intent = new Intent(this, roundFinished.class);
         startActivity(intent);
     }
 
