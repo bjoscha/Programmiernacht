@@ -13,6 +13,9 @@ public class Group {
         this.id = id;
         this.totalPoints = 0;
         this.pointsLastRound = new ArrayList<>();
+        for(int i=0;i<3;i++) {
+            pointsLastRound.add(0);
+        }
     }
 
     public void addPoints(int difficulty) {
