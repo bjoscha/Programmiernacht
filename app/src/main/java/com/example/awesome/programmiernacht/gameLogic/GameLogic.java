@@ -1,6 +1,7 @@
 package com.example.awesome.programmiernacht.gameLogic;
 
 import com.example.awesome.programmiernacht.Group;
+import com.example.awesome.programmiernacht.Timeable;
 import com.example.awesome.programmiernacht.WordCard;
 import com.example.awesome.programmiernacht.WordCardProvider;
 
@@ -16,8 +17,11 @@ public class GameLogic {
     private WordCard activeCard;
     private boolean gameOver;
     private WordCardProvider wcp;
-    private int targetPoints = 30;
     private static GameLogic INSTANCE;
+    private Timeable timeable;
+
+    private int targetPoints = 30;
+    private int turnTime = 60;
 
     public static GameLogic getInstance() {
         if (INSTANCE == null) {
@@ -57,7 +61,9 @@ public class GameLogic {
         return groups;
     }
 
-    public WordCard start() {
+    public WordCard start(Timeable timeable) {
+
+        this.timeable = timeable;
 
         int difficulty = 1;
         int maxCards = 0;
@@ -71,7 +77,7 @@ public class GameLogic {
 
         activeGroup.clearPointsLastRound();
 
-        Timer timer = new Timer(this);
+        Timer timer = new Timer(this, turnTime);
         timer.run();
 
         return wcp.GetNextCard(difficulty);
@@ -81,14 +87,11 @@ public class GameLogic {
         return gameOver;
     }
 
-    public void updateTime(long secondsSinceStart) {
-
-        // TODO call GUI
+    public void updateTime(int remainingTime) {
+        timeable.setRemainingTime(remainingTime);
     }
 
     public void timeUp() {
-
-        // TODO call GUI
+        timeable.timeOver();
     }
-
 }

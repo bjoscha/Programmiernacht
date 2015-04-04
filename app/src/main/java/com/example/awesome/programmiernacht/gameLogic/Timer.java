@@ -5,8 +5,10 @@ import android.os.SystemClock;
 public class Timer implements Runnable {
 
     private GameLogic gameLogic;
+    private int turnTime;
 
-    public Timer(GameLogic gameLogic) {
+    public Timer(GameLogic gameLogic, int turnTime) {
+        this.turnTime = turnTime;
         this.gameLogic = gameLogic;
     }
 
@@ -20,13 +22,12 @@ public class Timer implements Runnable {
             try {
                 Thread.sleep(1000);
                 long secondsSinceStart = (SystemClock.currentThreadTimeMillis()-startTime)/1000;
-                if(secondsSinceStart >= 60) {
+                if(secondsSinceStart >= turnTime) {
                     gameLogic.timeUp();
                     running = false;
                 } else {
-                    gameLogic.updateTime(secondsSinceStart);
+                    gameLogic.updateTime((int)(turnTime - secondsSinceStart));
                 }
-                gameLogic.updateTime(secondsSinceStart);
             } catch (InterruptedException e) {
 
             }
