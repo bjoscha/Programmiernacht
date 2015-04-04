@@ -1,9 +1,11 @@
 package com.example.awesome.programmiernacht;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.awesome.programmiernacht.gameLogic.GameLogic;
@@ -33,6 +35,18 @@ public class moveFinished extends ActionBarActivity {
 
     }
 
+    public void continueGame(View view) {
+        Intent intent = null;
+
+        gl.nextGroup();
+        if (gl.getActiveGroup().getId() == 0) {
+            intent = new Intent(this, selectNumberOfGroups.class);//Todo Runde zu Ende
+        } else {
+            intent = new Intent(this, groupReady.class);//Groupe Ready Screen
+        }
+        
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
