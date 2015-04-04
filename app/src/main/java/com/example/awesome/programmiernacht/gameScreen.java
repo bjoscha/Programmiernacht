@@ -1,31 +1,31 @@
 package com.example.awesome.programmiernacht;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 
-public class groupReady extends ActionBarActivity {
+public class gameScreen extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group_ready);
-        TextView textGroup = (TextView) findViewById(R.id.textViewGr);
-        int activeGroup = 5; //todo
-        textGroup.setText("Gruppe "+activeGroup +" bereit?");
+        setContentView(R.layout.activity_game_screen);
+        TextView textTime = (TextView) findViewById(R.id.textViewTime);
+        int currentTime = 50; //todo
+        textTime.setText("" +currentTime);
+        TextView textPoints = (TextView) findViewById(R.id.textViewPoints);
+        int currentPoints = 10; //todo
+        textPoints.setText("" +currentPoints);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_group_ready, menu);
+        getMenuInflater().inflate(R.menu.menu_game_screen, menu);
         return true;
     }
 
@@ -42,10 +42,5 @@ public class groupReady extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void groupIsReady(View view) {
-        Intent intent = new Intent(this, gameScreen.class);
-        startActivity(intent);
     }
 }
