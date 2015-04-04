@@ -1,5 +1,6 @@
 package com.example.awesome.programmiernacht;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,12 +20,11 @@ public class selectNumberOfGroups extends ActionBarActivity {
         LinkedList<Group> groups = new LinkedList<Group>();
         numberOfGroups = Integer.parseInt(button.getText().toString());
 
-        //todo 
+        //todo
         for(int i=0; i<numberOfGroups; i++) {
             groups.add(new Group(i));
         }
     }
-
 
 
     @Override
@@ -54,5 +54,10 @@ public class selectNumberOfGroups extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void startGame(View view) {
+        Intent intent = new Intent(this, groupReady.class);
+        startActivity(intent);
     }
 }

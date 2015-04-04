@@ -31,7 +31,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40sp"
         android:width="50sp"
-        android:clickable="true" />
+        android:clickable="true"
+        android:onClick="startGame" />
 
     <Button
         android:layout_width="wrap_content"
@@ -40,7 +41,8 @@
         android:id="@+id/button2"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12sp"
-        android:width="50sp" />
+        android:width="50sp"
+        android:onClick="startGame" />
 
     <Button
         android:layout_width="wrap_content"
@@ -49,7 +51,8 @@
         android:id="@+id/button3"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12sp"
-        android:width="50sp" />
+        android:width="50sp"
+        android:onClick="startGame" />
 
     <Button
         android:layout_width="wrap_content"
@@ -58,7 +61,8 @@
         android:id="@+id/button3"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12sp"
-        android:width="50sp" />
+        android:width="50sp"
+        android:onClick="startGame" />
 
     <Button
     android:layout_width="wrap_content"
@@ -67,7 +71,8 @@
     android:id="@+id/button3"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="12sp"
-    android:width="50sp" />
+    android:width="50sp"
+        android:onClick="startGame" />
 
     <Button
         android:layout_width="wrap_content"
@@ -76,6 +81,7 @@
         android:id="@+id/button3"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12sp"
-        android:width="50sp" />
+        android:width="50sp"
+        android:onClick="groupIsReady" />
 </LinearLayout>
 
