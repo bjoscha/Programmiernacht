@@ -5,7 +5,7 @@ package com.example.awesome.programmiernacht;
  */
 public interface Timeable {
 
-    public void tick();
+    public void setRemainingTime(int remainingTime);
     public void timeOver();
 
 }
