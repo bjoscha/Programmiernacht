@@ -80,6 +80,7 @@ android:id="@+id/moveFinished_activity">
     android:id="@+id/button_Continue"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="12sp"
-    android:width="50sp" />
+    android:width="50sp"
+    android:onClick="continueGame"/>
 </LinearLayout>
 
