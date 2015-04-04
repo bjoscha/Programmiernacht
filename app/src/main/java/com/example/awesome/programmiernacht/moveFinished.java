@@ -4,14 +4,33 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.example.awesome.programmiernacht.gameLogic.GameLogic;
 
 
 public class moveFinished extends ActionBarActivity {
+    private GameLogic gl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move_finished);
+
+        Group curGroup = null; //todo
+
+        ((TextView) findViewById(R.id.textView_totalPoints)).setText("Erreichte Punktzahl: " +
+                curGroup.getTotalPoints());
+
+        ((TextView) findViewById(R.id.textView_pointsCat1)).setText("Kategorie 1: " +
+                curGroup.getPointsLastRound().get(0));
+
+        ((TextView) findViewById(R.id.textView_pointsCat2)).setText("Kategorie 1: " +
+                curGroup.getPointsLastRound().get(1));
+
+        ((TextView) findViewById(R.id.textView_pointsCat3)).setText("Kategorie 1: " +
+                curGroup.getPointsLastRound().get(2));
+
     }
 
 
