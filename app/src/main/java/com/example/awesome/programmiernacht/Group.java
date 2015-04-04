@@ -19,7 +19,8 @@ public class Group {
     }
 
     public void addPoints(int difficulty) {
-        pointsLastRound.add(difficulty-1, difficulty);
+        int i = difficulty-1;
+        pointsLastRound.set(i, pointsLastRound.get(i)+difficulty);
         totalPoints += difficulty;
     }
 
