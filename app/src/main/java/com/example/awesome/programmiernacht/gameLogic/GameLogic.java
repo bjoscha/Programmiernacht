@@ -17,6 +17,14 @@ public class GameLogic {
     private boolean gameOver;
     private WordCardProvider wcp;
     private int targetPoints = 30;
+    private static GameLogic INSTANCE;
+
+    public static GameLogic getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new GameLogic();
+        }
+        return INSTANCE;
+    }
 
     public void newGame(List<Group> groups) {
         this.groups = groups;
