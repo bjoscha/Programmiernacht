@@ -1,40 +1,42 @@
 package com.example.awesome.programmiernacht;
 
-import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Group {
 
     private int id;
-    private int points;
-    private String name;
+    private int totalPoints;
+    private List<Integer> pointsLastRound;
 
-    public void Group(int id, int points, String name) {
+    public Group(int id) {
         this.id = id;
-        this.points = points;
-        this.name = name;
+        this.totalPoints = 0;
+        this.pointsLastRound = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
+    public void addPoints(int difficulty) {
+        pointsLastRound.add(difficulty-1, difficulty);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getTotalPoints() {
+        return totalPoints;
     }
 
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
+    public void setTotalPoints(int totalPoints) {
+        this.totalPoints = totalPoints;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public List<Integer> getPointsLastRound() {
+        return pointsLastRound;
     }
+
+    public void clearPointsLastRound() {
+        pointsLastRound.clear();
+    }
+
 }
