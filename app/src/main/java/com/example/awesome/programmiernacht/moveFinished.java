@@ -1,19 +1,52 @@
 package com.example.awesome.programmiernacht;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import com.example.awesome.programmiernacht.gameLogic.GameLogic;
 
 
 public class moveFinished extends ActionBarActivity {
+    private GameLogic gl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move_finished);
+
+        Group curGroup = null; //todo
+
+        ((TextView) findViewById(R.id.textView_totalPoints)).setText("Erreichte Punktzahl: " +
+                curGroup.getTotalPoints());
+
+        ((TextView) findViewById(R.id.textView_pointsCat1)).setText("Kategorie 1: " +
+                curGroup.getPointsLastRound().get(0));
+
+        ((TextView) findViewById(R.id.textView_pointsCat2)).setText("Kategorie 1: " +
+                curGroup.getPointsLastRound().get(1));
+
+        ((TextView) findViewById(R.id.textView_pointsCat3)).setText("Kategorie 1: " +
+                curGroup.getPointsLastRound().get(2));
+
     }
 
+    public void continueGame(View view) {
+        Intent intent = null;
+
+        gl.nextGroup();
+        if (gl.getActiveGroup().getId() == 0) {
+            intent = new Intent(this, selectNumberOfGroups.class);//Todo Runde zu Ende
+        } else {
+            intent = new Intent(this, groupReady.class);//Groupe Ready Screen
+        }
+        
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
