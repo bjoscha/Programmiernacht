@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".selectNumberOfGroups"
+            android:label="@string/title_activity_select_number_of_groups" >
+        </activity>
+        <activity
+            android:name=".groupReady"
+            android:label="@string/title_activity_group_ready" >
+        </activity>
     </application>
 
 </manifest>

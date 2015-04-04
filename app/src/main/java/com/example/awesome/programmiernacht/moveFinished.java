@@ -4,40 +4,21 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-
-import java.util.LinkedList;
 
 
-public class selectNumberOfGroups extends ActionBarActivity {
-
-    private int numberOfGroups = 0;
-
-    private void userSelectNumberOfGroups(View view) {
-        Button button = (Button) view;
-        LinkedList<Group> groups = new LinkedList<Group>();
-        numberOfGroups = Integer.parseInt(button.getText().toString());
-
-        //todo 
-        for(int i=0; i<numberOfGroups; i++) {
-            groups.add(new Group(i));
-        }
-    }
-
-
+public class moveFinished extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_number_of_groups);
+        setContentView(R.layout.activity_move_finished);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_select_number_of_groups, menu);
+        getMenuInflater().inflate(R.menu.menu_move_finished, menu);
         return true;
     }
 
