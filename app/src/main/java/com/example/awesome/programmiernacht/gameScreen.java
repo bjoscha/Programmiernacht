@@ -1,9 +1,11 @@
 package com.example.awesome.programmiernacht;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -15,10 +17,10 @@ public class gameScreen extends ActionBarActivity {
         setContentView(R.layout.activity_game_screen);
         TextView textTime = (TextView) findViewById(R.id.textViewTime);
         int currentTime = 50; //todo
-        textTime.setText("" +currentTime);
+        textTime.setText("Zeit:" +currentTime);
         TextView textPoints = (TextView) findViewById(R.id.textViewPoints);
         int currentPoints = 10; //todo
-        textPoints.setText("" +currentPoints);
+        textPoints.setText("Punkte:" +currentPoints);
     }
 
 
@@ -42,5 +44,16 @@ public class gameScreen extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void skipWord(View view) {
+        Intent intent = new Intent(this, gameScreen.class);
+        startActivity(intent);
+    }
+
+    public void nextWord(View view) {
+        Intent intent = new Intent(this, gameScreen.class);
+        startActivity(intent);
     }
 }
