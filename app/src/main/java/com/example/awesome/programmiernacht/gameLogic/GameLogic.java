@@ -68,7 +68,7 @@ public class GameLogic {
     }
 
     public void nextGroup() {
-        if(activeGroup.getTotalPoints() >= targetPoints) {
+        if(activeGroup.getTotalPoints() >= targetPoints) { //Todo Group1 can win without giving Group2 the chance to play
             gameOver = true;
         } else {
             //activeGroup = groups.get((activeGroup.getId()+1) % groups.size());
