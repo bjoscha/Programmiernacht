@@ -71,7 +71,8 @@ public class GameLogic {
         if(activeGroup.getTotalPoints() >= targetPoints) {
             gameOver = true;
         } else {
-            activeGroup = groups.get((activeGroup.getId()+1) % groups.size());
+            //activeGroup = groups.get((activeGroup.getId()+1) % groups.size());
+            activeGroup = groups.get(activeGroup.getId() % groups.size());
         }
     }
 

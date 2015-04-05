@@ -1,3 +1,9 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
 android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -13,7 +19,9 @@ android:weightSum="1"
 android:id="@+id/moveFinished">
 
 
-<TextView
+
+
+    <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -73,7 +81,7 @@ android:id="@+id/moveFinished">
         android:layout_marginTop="30sp"
         android:textSize="30sp" />
 
-<Button
+    <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Weiter!"
@@ -82,5 +90,7 @@ android:id="@+id/moveFinished">
     android:layout_marginTop="12sp"
     android:width="50sp"
     android:onClick="continueGame"/>
+
 </LinearLayout>
 
+</ScrollView>

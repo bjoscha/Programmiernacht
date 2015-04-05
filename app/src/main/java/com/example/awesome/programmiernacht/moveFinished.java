@@ -40,7 +40,7 @@ public class moveFinished extends ActionBarActivity {
         Intent intent = null;
 
         gl.nextGroup();
-        if (gl.getActiveGroup().getId() == 0) {
+        if (gl.getActiveGroup().getId() == 1) {
             intent = new Intent(this, roundFinished.class);
         } else {
             intent = new Intent(this, groupReady.class);//Group Ready Screen
