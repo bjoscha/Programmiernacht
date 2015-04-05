@@ -34,10 +34,10 @@ public class roundFinished extends ActionBarActivity {
             LinearLayout curLayout = (LinearLayout) findViewById(R.id.roundFinished);
             TextView tv = new TextView(this);
             int sumLastRound = 0;
-            for (int i : curGroup.getPointsLastRound())
-                sumLastRound += i;
+            //for (int i : curGroup.getPointsLastRound())
+              //  sumLastRound += i;
             tv.setText("Gruppe " + curGroup.getId() + ": " + curGroup.getTotalPoints() +
-                        " + " + sumLastRound);
+                        " + " + /*sumLastRound*/ curGroup.getTurnPoints());
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             tv.setLayoutParams(lp);
@@ -48,8 +48,9 @@ public class roundFinished extends ActionBarActivity {
     public void continueGame(View view) {
         Intent intent = null;
 
-        if (gl.isGameOver()) {
+        if (gl.isGameOver() && gl.getActiveGroup().getId() == 1) {
             //intent = new Intent(this, ) todo gameOver-Screen
+            intent = new Intent(this, gameFinished.class);
         }
         else {
             intent = new Intent(this, groupReady.class);
@@ -59,16 +60,7 @@ public class roundFinished extends ActionBarActivity {
     }
 
     public void endGame(View view) {
-        Intent intent = null;
-
-        //TODO EndGameScreen
-
-        gl.nextGroup();
-        if (gl.getActiveGroup().getId() == 0) {
-            intent = new Intent(this, selectNumberOfGroups.class);
-        } else {
-            intent = new Intent(this, groupReady.class);//Group Ready Screen
-        }
+        Intent intent = new Intent(this, gameFinished.class);
 
         startActivity(intent);
     }

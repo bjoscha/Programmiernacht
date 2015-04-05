@@ -28,10 +28,10 @@ public class moveFinished extends ActionBarActivity {
         ((TextView) findViewById(R.id.textView_pointsCat1)).setText("Kategorie 1: " +
                 curGroup.getPointsLastRound().get(0));
 
-        ((TextView) findViewById(R.id.textView_pointsCat2)).setText("Kategorie 1: " +
+        ((TextView) findViewById(R.id.textView_pointsCat2)).setText("Kategorie 2: " +
                 curGroup.getPointsLastRound().get(1));
 
-        ((TextView) findViewById(R.id.textView_pointsCat3)).setText("Kategorie 1: " +
+        ((TextView) findViewById(R.id.textView_pointsCat3)).setText("Kategorie 3: " +
                 curGroup.getPointsLastRound().get(2));
 
     }

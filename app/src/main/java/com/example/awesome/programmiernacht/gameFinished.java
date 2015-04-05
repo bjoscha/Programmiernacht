@@ -6,8 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.awesome.programmiernacht.gameLogic.GameLogic;
+
+import java.util.List;
 
 
 public class gameFinished extends ActionBarActivity {
@@ -19,6 +24,41 @@ public class gameFinished extends ActionBarActivity {
         setContentView(R.layout.activity_game_finished);
 
         gl = GameLogic.getInstance();
+
+        //Display winning group
+        TextView tvWinnerGroup = (TextView) findViewById(R.id.textViewWinnerGroup);
+        List<Group> groups = gl.getAllGroups();
+        Group winner = groups.get(0);
+        boolean multipleWinners = false;
+        for (int i = 1; i < groups.size(); i++) {
+            Group cg = groups.get(i);
+            if (cg.getTotalPoints() == winner.getTotalPoints()) {
+                multipleWinners = true;
+            }
+            if (cg.getTotalPoints() > winner.getTotalPoints()) {
+                winner = cg;
+                multipleWinners = false;
+            }
+
+        }
+
+        if (!multipleWinners)
+            tvWinnerGroup.setText("Gruppe " + winner.getId() + " gewinnt");
+        else
+            tvWinnerGroup.setText("Gleichstand");
+
+        //Display overall scores
+        LinearLayout curLayout = (LinearLayout) findViewById(R.id.gameFinished);
+        for (Group curGroup : groups) {
+
+            TextView tv = new TextView(this);
+            tv.setText("Gruppe " + curGroup.getId() + ": " + curGroup.getTotalPoints());
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tv.setLayoutParams(lp);
+            curLayout.addView(tv,1+curGroup.getId());
+        }
+
     }
 
 
@@ -45,6 +85,7 @@ public class gameFinished extends ActionBarActivity {
     }
 
     public void playAgain(View view) {
+        gl.restartGame();
         Intent intent = new Intent(this, groupReady.class);
         startActivity(intent);
     }

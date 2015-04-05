@@ -63,7 +63,7 @@ public class gameScreen extends ActionBarActivity implements Timeable{
         int currentPoints = 0;
         textPoints.setText("Punkte:" +currentPoints);
 
-        WordCard wc = gl.start(this,this);
+        WordCard wc = gl.start(this);
 
         showNextWord(wc);
     }

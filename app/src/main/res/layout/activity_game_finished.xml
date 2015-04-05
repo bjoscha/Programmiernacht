@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Spiel vorbei!"
+        android:text="Spiel vorbei"
         android:id="@+id/textViewGameFinished"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30sp"
@@ -26,26 +26,16 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="Gruppe GGGG gewinnt!"
-    android:id="@+id/textViewGameFinished"
+    android:text="Gruppe GGGG gewinnt"
+    android:id="@+id/textViewWinnerGroup"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="30sp"
     android:textSize="30sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Ranking"
-        android:id="@+id/textViewRanking"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30sp"
-        android:textSize="30sp" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nochmal spielen!"
+        android:text="Nochmal spielen"
         android:id="@+id/buttonPlayAgain"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20sp"

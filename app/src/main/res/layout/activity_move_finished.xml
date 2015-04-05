@@ -25,7 +25,7 @@ android:id="@+id/moveFinished">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="Zug zuende!"
+    android:text="Zug zuende"
     android:id="@+id/textView"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="30sp"
@@ -84,7 +84,7 @@ android:id="@+id/moveFinished">
     <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Weiter!"
+    android:text="Weiter"
     android:id="@+id/button_Continue"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="12sp"

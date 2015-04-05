@@ -69,6 +69,11 @@ public class WordCardProvider {
         }
     }
 
+    //TODO: All cards should be available again (if game is restarted inside app).
+    public void reset() {
+
+    }
+
     public void MixCards()
     {
         Collections.shuffle(m_wordCards);

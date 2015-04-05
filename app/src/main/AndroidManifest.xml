@@ -33,6 +33,10 @@
             android:label="moveFinished" >
         </activity>
         <activity
+            android:name=".gameFinished"
+            android:label="gameFinished" >
+        </activity>
+        <activity
             android:name=".gameScreen"
             android:label="gameScreen" >
         </activity>

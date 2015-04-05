@@ -25,9 +25,9 @@ public class GameLogic {
     private WordCardProvider wcp;
     private static GameLogic INSTANCE;
     private Timeable timeable;
-    private Activity myAct;
 
-    private int targetPoints = 30;
+
+    private int targetPoints = 20;
     private int turnTime = 10;
 
     public GameLogic(XmlResourceParser xrp) {
@@ -70,10 +70,10 @@ public class GameLogic {
     public void nextGroup() {
         if(activeGroup.getTotalPoints() >= targetPoints) { //Todo Group1 can win without giving Group2 the chance to play
             gameOver = true;
-        } else {
+        }// else { //Todo temporary fix
             //activeGroup = groups.get((activeGroup.getId()+1) % groups.size());
             activeGroup = groups.get(activeGroup.getId() % groups.size());
-        }
+        //} //Todo temporary fix
     }
 
     public Group getActiveGroup() {
@@ -87,10 +87,9 @@ public class GameLogic {
 
     }
 
-    public WordCard start(Timeable timeable, Activity act) {
+    public WordCard start(Timeable timeable) {
 
         this.timeable = timeable;
-        this.myAct = act;
         int difficulty = 1;
         int maxCards = 0;
         for(int i=1; i<=activeGroup.getPointsLastRound().size(); i++) {
@@ -128,5 +127,16 @@ public class GameLogic {
 
 
         timeable.timeOver();
+    }
+
+
+    public void restartGame() {
+        this.gameOver = false;
+        this.activeGroup = this.groups.get(0);
+        for (Group cg : this.groups) {
+            cg.clearPointsLastRound();
+            cg.setTotalPoints(0);
+        }
+        this.wcp.reset();
     }
 }
