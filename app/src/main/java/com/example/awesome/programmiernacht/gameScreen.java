@@ -12,17 +12,19 @@ import android.widget.TextView;
 
 import com.example.awesome.programmiernacht.gameLogic.GameLogic;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
 public class gameScreen extends ActionBarActivity implements Timeable{
-    private GameLogic gl = GameLogic.getInstance();
-
+    private GameLogic gl;
+    private int numberOfPreviousForbiddenWords;
 
     @Override
     public void setRemainingTime(int remainingTime) {
         TextView textTime = (TextView) findViewById(R.id.textViewTime);
         textTime.setText("" + remainingTime);
+
     }
 
     @Override
@@ -36,11 +38,13 @@ public class gameScreen extends ActionBarActivity implements Timeable{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
+        gl = GameLogic.getInstance();
+
         TextView textPoints = (TextView) findViewById(R.id.textViewPoints);
         int currentPoints = 0;
         textPoints.setText("Punkte:" +currentPoints);
 
-        WordCard wc = gl.start(this);
+        WordCard wc = gl.start(this,this);
 
         showNextWord(wc);
     }
@@ -60,8 +64,10 @@ public class gameScreen extends ActionBarActivity implements Timeable{
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             tv.setLayoutParams(lp);
-            curLayout.addView(tv, 6 + i);
+            curLayout.addView(tv, 2 + i);
+
         }
+        numberOfPreviousForbiddenWords = forbiddenWords.size();
     }
 
     @Override
@@ -88,19 +94,22 @@ public class gameScreen extends ActionBarActivity implements Timeable{
 
 
     public void skipWord(View view) {
-        Intent intent = new Intent(this, gameScreen.class);
-        startActivity(intent);
 
+        removePreviousForbiddenWords();
         showNextWord(gl.next(false));
     }
 
     public void nextWord(View view) {
-        Intent intent = new Intent(this, gameScreen.class);
-        startActivity(intent);
 
+        removePreviousForbiddenWords();
         showNextWord(gl.next(true));
         Group g = gl.getActiveGroup();
+        TextView tv = (TextView) findViewById(R.id.textViewPoints);
+        tv.setText("" + g.getTurnPoints());
+    }
 
-        ((TextView) findViewById(R.id.textView_totalPoints)).setText("" + g.getTurnPoints());
+    private void removePreviousForbiddenWords() {
+        LinearLayout curLayout = (LinearLayout) findViewById(R.id.gameScreen);
+        curLayout.removeViews(2,numberOfPreviousForbiddenWords);
     }
 }

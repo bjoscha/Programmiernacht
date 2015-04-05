@@ -28,6 +28,10 @@
             android:name=".roundFinished"
             android:label="@string/title_activity_round_finished" >
         </activity>
+        <activity
+            android:name=".gameScreen"
+            android:label="gameScreen" >
+        </activity>
     </application>
 
 </manifest>

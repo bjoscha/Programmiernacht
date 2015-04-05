@@ -15,14 +15,15 @@ public class Timer implements Runnable {
     @Override
     public void run() {
 
-        long startTime = SystemClock.currentThreadTimeMillis();
+        float startTime = SystemClock.elapsedRealtime();
 
         boolean running = true;
         while (running) {
             try {
                 Thread.sleep(1000);
-                long secondsSinceStart = (SystemClock.currentThreadTimeMillis()-startTime)/1000;
+                float secondsSinceStart = (SystemClock.elapsedRealtime()-startTime)/1000;
                 if(secondsSinceStart >= turnTime) {
+
                     gameLogic.timeUp();
                     running = false;
                 } else {

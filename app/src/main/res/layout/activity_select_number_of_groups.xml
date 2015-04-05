@@ -32,7 +32,7 @@
         android:layout_marginTop="40sp"
         android:width="50sp"
         android:clickable="true"
-        android:onClick="startGame" />
+        android:onClick="userSelectNumberOfGroups" />
 
     <Button
         android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12sp"
         android:width="50sp"
-        android:onClick="startGame" />
+        android:onClick="userSelectNumberOfGroups" />
 
     <Button
         android:layout_width="wrap_content"
@@ -52,36 +52,36 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12sp"
         android:width="50sp"
-        android:onClick="startGame" />
+        android:onClick="userSelectNumberOfGroups" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5"
-        android:id="@+id/button3"
+        android:id="@+id/button4"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12sp"
         android:width="50sp"
-        android:onClick="startGame" />
+        android:onClick="userSelectNumberOfGroups" />
 
     <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="6"
-    android:id="@+id/button3"
+    android:id="@+id/button5"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="12sp"
     android:width="50sp"
-        android:onClick="startGame" />
+        android:onClick="userSelectNumberOfGroups" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="7"
-        android:id="@+id/button3"
+        android:id="@+id/button6"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12sp"
         android:width="50sp"
-        android:onClick="groupIsReady" />
+        android:onClick="userSelectNumberOfGroups" />
 </LinearLayout>
 

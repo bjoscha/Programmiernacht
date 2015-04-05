@@ -7,13 +7,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.awesome.programmiernacht.gameLogic.GameLogic;
+
 
 public class gameFinished extends ActionBarActivity {
+    private GameLogic gl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_finished);
+
+        gl = GameLogic.getInstance();
     }
 
 

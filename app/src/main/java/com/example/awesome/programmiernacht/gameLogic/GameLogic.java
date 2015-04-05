@@ -1,6 +1,11 @@
 package com.example.awesome.programmiernacht.gameLogic;
 
+import android.app.Activity;
+import android.content.res.XmlResourceParser;
+import android.widget.TextView;
+
 import com.example.awesome.programmiernacht.Group;
+import com.example.awesome.programmiernacht.R;
 import com.example.awesome.programmiernacht.Timeable;
 import com.example.awesome.programmiernacht.WordCard;
 import com.example.awesome.programmiernacht.WordCardProvider;
@@ -20,13 +25,26 @@ public class GameLogic {
     private WordCardProvider wcp;
     private static GameLogic INSTANCE;
     private Timeable timeable;
+    private Activity myAct;
 
     private int targetPoints = 30;
     private int turnTime = 60;
 
+    public GameLogic(XmlResourceParser xrp) {
+        if (wcp == null)
+            wcp = new WordCardProvider(xrp);
+    }
+
+    public static GameLogic getInstance(XmlResourceParser xrp) {
+        if (INSTANCE == null) {
+            INSTANCE = new GameLogic(xrp);
+        }
+        return INSTANCE;
+    }
+
     public static GameLogic getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new GameLogic();
+            INSTANCE = new GameLogic(null);
         }
         return INSTANCE;
     }
@@ -40,9 +58,12 @@ public class GameLogic {
     public WordCard next(boolean correct) {
 
         if(correct) {
-            return wcp.GetNextCard(min(activeCard.GetDifficulty() + 1, 3));
+            activeGroup.addPoints(activeCard.GetDifficulty());
+            activeCard = wcp.GetNextCard(min(activeCard.GetDifficulty() + 1, 3));
+            return activeCard;
         } else {
-            return wcp.GetNextCard(max(activeCard.GetDifficulty() - 1, 1));
+            activeCard = wcp.GetNextCard(max(activeCard.GetDifficulty() - 1, 1));
+            return activeCard;
         }
     }
 
@@ -59,31 +80,16 @@ public class GameLogic {
     }
 
     public List<Group> getAllGroups() {
-        Group g0 = new Group(0);
-        g0.addPoints(1);
-        g0.addPoints(2);
-        g0.addPoints(2);
 
-        Group g1 = new Group(1);
-        g1.addPoints(2);
-        g1.addPoints(3);
-        g1.addPoints(3);
-
-        this.groups = new ArrayList<Group>();
-
-        groups.clear();
-
-        groups.add(g0);
-        groups.add(g1);
 
         return groups;
 
     }
 
-    public WordCard start(Timeable timeable) {
+    public WordCard start(Timeable timeable, Activity act) {
 
         this.timeable = timeable;
-
+        this.myAct = act;
         int difficulty = 1;
         int maxCards = 0;
         for(int i=1; i<=activeGroup.getPointsLastRound().size(); i++) {
@@ -96,10 +102,17 @@ public class GameLogic {
 
         activeGroup.clearPointsLastRound();
 
-        Timer timer = new Timer(this, turnTime);
-        timer.run();
 
-        return wcp.GetNextCard(difficulty);
+
+
+        Timer timer = new Timer(this, turnTime);
+        myAct.runOnUiThread(timer);
+
+        //Thread myThread = new Thread(timer);
+        //myThread.start();
+
+        this.activeCard = wcp.GetNextCard(difficulty);
+        return this.activeCard;
     }
 
     public boolean isGameOver() {
@@ -107,10 +120,30 @@ public class GameLogic {
     }
 
     public void updateTime(int remainingTime) {
-        timeable.setRemainingTime(remainingTime);
+        TextView myTime = (TextView) myAct.findViewById(R.id.textViewTime);
+        myTime.post(new Runnable() {
+            public void run() {
+            /* the desired UI update */
+                timeable.setRemainingTime(100);
+
+            }
+        });
+
+
+
+        //timeable.setRemainingTime(remainingTime);
     }
 
     public void timeUp() {
-        timeable.timeOver();
+        TextView myTime = (TextView) myAct.findViewById(R.id.textViewTime);
+                myTime.post(new Runnable() {
+                    public void run() {
+            /* the desired UI update */
+                        timeable.setRemainingTime(100);
+
+                    }
+                });
+
+        //timeable.timeOver();
     }
 }

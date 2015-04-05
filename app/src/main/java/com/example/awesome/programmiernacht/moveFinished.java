@@ -19,7 +19,8 @@ public class moveFinished extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move_finished);
 
-        Group curGroup = null; //todo
+        gl = GameLogic.getInstance();
+        Group curGroup = gl.getActiveGroup();
 
         ((TextView) findViewById(R.id.textView_totalPoints)).setText("Erreichte Punktzahl: " +
                 curGroup.getTotalPoints());

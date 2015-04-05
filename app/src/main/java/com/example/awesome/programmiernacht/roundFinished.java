@@ -19,12 +19,14 @@ import java.util.List;
 
 
 public class roundFinished extends ActionBarActivity {
-    private GameLogic gl = GameLogic.getInstance();
+    private GameLogic gl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round_finished);
+
+        gl = GameLogic.getInstance();
 
         List<Group> groups = gl.getAllGroups();
 

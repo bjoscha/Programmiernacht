@@ -16,19 +16,21 @@ import java.util.LinkedList;
 public class selectNumberOfGroups extends ActionBarActivity {
 
     private int numberOfGroups = 0;
-    private GameLogic gl = GameLogic.getInstance();
+    private GameLogic gl;
 
-    private void userSelectNumberOfGroups(View view) {
+    public void userSelectNumberOfGroups(View view) {
         Button button = (Button) view;
         LinkedList<Group> groups = new LinkedList<Group>();
         numberOfGroups = Integer.parseInt(button.getText().toString());
 
-        //todo
         for(int i=1; i<=numberOfGroups; i++) {
             groups.add(new Group(i));
         }
 
         gl.newGame(groups);
+
+        Intent intent = new Intent(this, groupReady.class);
+        startActivity(intent);
     }
 
 
@@ -36,6 +38,9 @@ public class selectNumberOfGroups extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_number_of_groups);
+
+
+        gl  = GameLogic.getInstance(getResources().getXml(R.xml.cards));
     }
 
 
@@ -61,8 +66,5 @@ public class selectNumberOfGroups extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void startGame(View view) {
-        Intent intent = new Intent(this, groupReady.class);
-        startActivity(intent);
-    }
+
 }

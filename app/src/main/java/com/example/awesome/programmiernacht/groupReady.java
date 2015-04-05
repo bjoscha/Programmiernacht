@@ -13,12 +13,13 @@ import com.example.awesome.programmiernacht.gameLogic.GameLogic;
 
 
 public class groupReady extends ActionBarActivity {
-    private GameLogic gl = GameLogic.getInstance();
+    private GameLogic gl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_ready);
+        gl = GameLogic.getInstance();
         TextView textGroup = (TextView) findViewById(R.id.textViewGr);
         int activeGroup = gl.getActiveGroup().getId();
         textGroup.setText("Gruppe "+activeGroup +" bereit?");
