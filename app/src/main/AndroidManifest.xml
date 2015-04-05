@@ -26,7 +26,11 @@
         </activity>
         <activity
             android:name=".roundFinished"
-            android:label="@string/title_activity_round_finished" >
+            android:label="roundFinished" >
+        </activity>
+        <activity
+            android:name=".moveFinished"
+            android:label="moveFinished" >
         </activity>
         <activity
             android:name=".gameScreen"

@@ -28,7 +28,7 @@ public class GameLogic {
     private Activity myAct;
 
     private int targetPoints = 30;
-    private int turnTime = 60;
+    private int turnTime = 10;
 
     public GameLogic(XmlResourceParser xrp) {
         if (wcp == null)
@@ -106,10 +106,9 @@ public class GameLogic {
 
 
         Timer timer = new Timer(this, turnTime);
-        myAct.runOnUiThread(timer);
 
-        //Thread myThread = new Thread(timer);
-        //myThread.start();
+        Thread myThread = new Thread(timer);
+        myThread.start();
 
         this.activeCard = wcp.GetNextCard(difficulty);
         return this.activeCard;
@@ -120,30 +119,13 @@ public class GameLogic {
     }
 
     public void updateTime(int remainingTime) {
-        TextView myTime = (TextView) myAct.findViewById(R.id.textViewTime);
-        myTime.post(new Runnable() {
-            public void run() {
-            /* the desired UI update */
-                timeable.setRemainingTime(100);
 
-            }
-        });
-
-
-
-        //timeable.setRemainingTime(remainingTime);
+        timeable.setRemainingTime(remainingTime);
     }
 
     public void timeUp() {
-        TextView myTime = (TextView) myAct.findViewById(R.id.textViewTime);
-                myTime.post(new Runnable() {
-                    public void run() {
-            /* the desired UI update */
-                        timeable.setRemainingTime(100);
 
-                    }
-                });
 
-        //timeable.timeOver();
+        timeable.timeOver();
     }
 }

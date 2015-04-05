@@ -31,7 +31,7 @@ public class roundFinished extends ActionBarActivity {
         List<Group> groups = gl.getAllGroups();
 
         for (Group curGroup : groups) {
-            LinearLayout curLayout = (LinearLayout) findViewById(R.id.roundFinished_activity);
+            LinearLayout curLayout = (LinearLayout) findViewById(R.id.roundFinished);
             TextView tv = new TextView(this);
             int sumLastRound = 0;
             for (int i : curGroup.getPointsLastRound())

@@ -1,6 +1,7 @@
 package com.example.awesome.programmiernacht;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,18 +20,36 @@ import java.util.List;
 public class gameScreen extends ActionBarActivity implements Timeable{
     private GameLogic gl;
     private int numberOfPreviousForbiddenWords;
+    private int remTime;
+    final Handler myHandler = new Handler();
+    gameScreen myGS = this;
+
+    final Runnable runnableSetRemainingTime = new Runnable() {
+        public void run() {
+            TextView textTime = (TextView) findViewById(R.id.textViewTime);
+            textTime.setText("" + remTime);
+        }
+    };
+
+    final Runnable runnableSetTimeOver = new Runnable() {
+        public void run() {
+            //Intent intent = new Intent(myGS, selectNumberOfGroups.class);
+            Intent intent = new Intent(myGS, moveFinished.class);
+            startActivity(intent);
+        }
+    };
 
     @Override
     public void setRemainingTime(int remainingTime) {
-        TextView textTime = (TextView) findViewById(R.id.textViewTime);
-        textTime.setText("" + remainingTime);
-
+        remTime = remainingTime;
+        //TextView textTime = (TextView) findViewById(R.id.textViewTime);
+        //textTime.setText("" + remainingTime);
+        myHandler.post(runnableSetRemainingTime);
     }
 
     @Override
     public void timeOver() {
-        Intent intent = new Intent(this, moveFinished.class);
-        startActivity(intent);
+        myHandler.post(runnableSetTimeOver);
     }
 
     @Override

@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:weightSum="1"
-        android:id="@+id/roundFinished_activity">
+        android:id="@+id/roundFinished">
 
 
         <TextView
