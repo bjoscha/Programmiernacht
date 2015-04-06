@@ -6,10 +6,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,27 +19,33 @@
         </activity>
         <activity
             android:name=".selectNumberOfGroups"
-            android:label="@string/title_activity_select_number_of_groups" >
+            android:label="@string/title_activity_select_number_of_groups"
+            android:noHistory="true">
         </activity>
         <activity
             android:name=".groupReady"
-            android:label="@string/title_activity_group_ready" >
+            android:label="@string/title_activity_group_ready"
+            android:noHistory="true">
         </activity>
         <activity
             android:name=".roundFinished"
-            android:label="roundFinished" >
+            android:label="roundFinished"
+            android:noHistory="true">
         </activity>
         <activity
             android:name=".moveFinished"
-            android:label="moveFinished" >
+            android:label="moveFinished"
+            android:noHistory="true">
         </activity>
         <activity
             android:name=".gameFinished"
-            android:label="gameFinished" >
+            android:label="gameFinished"
+            android:noHistory="true">
         </activity>
         <activity
             android:name=".gameScreen"
-            android:label="gameScreen" >
+            android:label="gameScreen"
+            android:noHistory="true">
         </activity>
     </application>
 

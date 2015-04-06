@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,7 +71,9 @@ public class gameScreen extends ActionBarActivity implements Timeable{
     }
 
     private void showNextWord(WordCard wc) {
-        ((TextView) findViewById(R.id.textView_Word)).setText(wc.GetWord());
+        TextView curWord = (TextView) findViewById(R.id.textView_Word);
+        curWord.setText(wc.GetWord());
+        //((TextView) findViewById(R.id.textView_Word)).setText(wc.GetWord());
 
         List<String> forbiddenWords = wc.GetForbiddenWords();
 
@@ -80,9 +84,14 @@ public class gameScreen extends ActionBarActivity implements Timeable{
             TextView tv = new TextView(this);
 
             tv.setText(curForbWord);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, curWord.getTextSize()*0.7f);
+
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
             tv.setLayoutParams(lp);
+            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+
             curLayout.addView(tv, 2 + i);
 
         }
