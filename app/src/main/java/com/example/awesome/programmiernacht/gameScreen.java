@@ -84,7 +84,7 @@ public class gameScreen extends ActionBarActivity implements Timeable{
             TextView tv = new TextView(this);
 
             tv.setText(curForbWord);
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, curWord.getTextSize()*0.7f);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, curWord.getTextSize()*0.5f);
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
